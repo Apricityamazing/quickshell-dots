@@ -11,37 +11,59 @@ PanelWindow { // qmllint disable uncreatable-type
     anchors.left: true
     anchors.right: true
     implicitHeight: 30
-    color: colBg
+    color: tokyonight.colBg
 
     // qmlformat off
     property font font: Qt.font({
     family: "JetBrainsMono Nerd Font",
     pixelSize: 14
   })
-    // Theme
-    property color colBg:             "#1a1b26"
-    property color colFg:             "#c0caf5"
-    property color colActiveBorder:   "#7aa2f7"
-    property color colInactiveBorder: "#292e42"
-    property color colBlack:          "#15161e"
-    property color colLightRed:       "#f7768e"
-    property color colDarkLime:       "#9ece6a"
-    property color colOrange:         "#e0af68"
-    property color colBlue:           "#7aa2f7"
-    property color colPurple:         "#bb9af7"
-    property color colTurqoise:       "#7dcfff"
-    property color colLightGray:      "#a9b1d6"
+    // Themes
+    QtObject {
+      id: tokyonight
+    property color colBg:             "#1A1B26"
+    property color colFg:             "#C0CAF5"
+    property color colActiveBorder:   "#7AA2F7"
+    property color colInactiveBorder: "#292E42"
+    property color colBlack:          "#15161E"
+    property color colLightRed:       "#F7768E"
+    property color colDarkLime:       "#9ECE6A"
+    property color colOrange:         "#E0AF68"
+    property color colBlue:           "#7AA2F7"
+    property color colPurple:         "#BB9AF7"
+    property color colTurqoise:       "#7DCFFF"
+    property color colLightGray:      "#A9B1D6"
     property color colMuted:          "#414868"
-    property color colPink:           "#ff899d"
-    property color colLightLime:      "#9fe044"
-    property color colLightOrange:    "#faba4a"
-    property color colBlueGrey:       "#8db0ff"
-    property color colLightPurple:    "#c7a9ff"
-    property color colLightCyan:      "#a4daff"
-    property color colBarelyGrey:     "#c0caf5"
-    property color colDarkOrange:     "#ff9e64"
-    property color colRed:            "#db4b4b"
-    // qmlformat on
+    property color colPink:           "#FF899D"
+    property color colLightLime:      "#9FE044"
+    property color colLightOrange:    "#FABA4A"
+    property color colBlueGrey:       "#8DB0FF"
+    property color colLightPurple:    "#C7A9FF"
+    property color colLightCyan:      "#A4DAFF"
+    property color colBarelyGrey:     "#C0CAF5"
+    property color colDarkOrange:     "#FF9E64"
+    property color colRed:            "#DB4B4B"
+    }
+
+    QtObject {
+      id: everforest
+    property color colBg:             "#4F5B58"
+    property color colFg:             "#D3C6AA"
+    property color colActiveBorder:   "#A7C080"
+    property color colInactiveBorder: "#DBBC7F"
+    property color colBlack:          "#1E2326"
+    property color colLightRed:       "#E67E80"
+    property color colGreen:          "#A7C080"
+    property color colOrange:         "#E69875"
+    property color colBlue:           "#7FBBB3"
+    property color colPurple:         "#D699B6"
+    property color colAqua:           "#83C092"
+    property color colLightGray:      "#9DA9A0"
+    property color colGray:           "#859289"
+    property color colDarkGray:       "#7A8478"
+    property color colMuted:          "#2E383C"
+  }
+     // qmlformat on
 
     // Outer RowLayout splits bar into equal thirds
     RowLayout {
@@ -63,9 +85,9 @@ PanelWindow { // qmllint disable uncreatable-type
                 spacing: 6
 
                 HyprlandWorkspaces {
-                    activeWorkspaceColor: root.colBarelyGrey
-                    inactiveWorkspaceColor: root.colTurqoise
-                    emptyInactiveWorkspaceColor: root.colBlue
+                    activeWorkspaceColor: tokyonight.colBarelyGrey
+                    inactiveWorkspaceColor: tokyonight.colTurqoise
+                    emptyInactiveWorkspaceColor: tokyonight.colBlue
                     font.family: root.font.family
                     font.pixelSize: root.font.pixelSize
                     font.bold: true
@@ -74,20 +96,20 @@ PanelWindow { // qmllint disable uncreatable-type
                 Rectangle {
                     implicitWidth: 1
                     implicitHeight: 16
-                    color: root.colMuted
+                    color: tokyonight.colMuted
                 }
 
                 IdleInhibitor {
                     importantWindow: root
                     font.family: root.font.family
                     font.pixelSize: root.font.pixelSize
-                    textColor: root.colDarkLime
+                    textColor: tokyonight.colDarkLime
                 }
 
                 Rectangle {
                     implicitWidth: 1
                     implicitHeight: 16
-                    color: root.colMuted
+                    color: tokyonight.colMuted
                 }
 
                 Tray {
@@ -99,12 +121,12 @@ PanelWindow { // qmllint disable uncreatable-type
                 Rectangle {
                     implicitWidth: 1
                     implicitHeight: 16
-                    color: root.colMuted
+                    color: tokyonight.colMuted
                     visible: tray.trayVisible
                 }
 
                 NetworkBarWidget {
-                    color: root.colPurple
+                    color: tokyonight.colPurple
                     font.family: root.font.family
                     font.pixelSize: root.font.pixelSize
                     font.bold: true
@@ -124,7 +146,7 @@ PanelWindow { // qmllint disable uncreatable-type
                 text: Hyprland.activeToplevel?.title ?? ""
                 wrapMode: Text.WrapAnywhere
                 clip: true
-                color: root.colDarkOrange
+                color: tokyonight.colDarkOrange
                 font.family: root.font.family
                 font.pixelSize: root.font.pixelSize
                 font.bold: true
@@ -146,7 +168,7 @@ PanelWindow { // qmllint disable uncreatable-type
                 spacing: 12
 
                 PipeWireWidget {
-                    color: root.colPink
+                    color: tokyonight.colPink
                     font.family: root.font.family
                     font.pixelSize: root.font.pixelSize
                     font.bold: true
@@ -155,11 +177,11 @@ PanelWindow { // qmllint disable uncreatable-type
                 Rectangle {
                     implicitWidth: 1
                     implicitHeight: 16
-                    color: root.colMuted
+                    color: tokyonight.colMuted
                 }
 
                 CpuWidget {
-                    color: root.colTurqoise
+                    color: tokyonight.colTurqoise
                     font.family: root.font.family
                     font.pixelSize: root.font.pixelSize
                     font.bold: true
@@ -168,11 +190,11 @@ PanelWindow { // qmllint disable uncreatable-type
                 Rectangle {
                     implicitWidth: 1
                     implicitHeight: 16
-                    color: root.colMuted
+                    color: tokyonight.colMuted
                 }
 
                 MemoryWidget {
-                    color: root.colLightPurple
+                    color: tokyonight.colLightPurple
                     font.family: root.font.family
                     font.pixelSize: root.font.pixelSize
                     font.bold: true
@@ -181,11 +203,11 @@ PanelWindow { // qmllint disable uncreatable-type
                 Rectangle {
                     implicitWidth: 1
                     implicitHeight: 16
-                    color: root.colMuted
+                    color: tokyonight.colMuted
                 }
 
                 ClockWidget {
-                    color: root.colBarelyGrey
+                    color: tokyonight.colBarelyGrey
                     font.family: root.font.family
                     font.pixelSize: root.font.pixelSize
                     font.bold: true
@@ -196,20 +218,20 @@ PanelWindow { // qmllint disable uncreatable-type
     Notifications {
         fontSize: root.font.pixelSize
         fontFamily: root.font.family
-        colBg: root.colBg
-        colFg: root.colFg
-        fontColor: root.colPurple
+        colBg: tokyonight.colBg
+        colFg: tokyonight.colFg
+        fontColor: tokyonight.colPurple
         centerAppNameFont.italic: true
     }
     AppLauncher {
-        colBg: Qt.alpha(Qt.lighter(root.colBg, 1.5), 0.7)
-        colFg: Qt.alpha(root.colFg, 0.7)
+        colBg: Qt.alpha(Qt.lighter(tokyonight.colBg, 1.5), 0.7)
+        colFg: Qt.alpha(tokyonight.colFg, 0.7)
         amountOfColumns: 3
         terminal: "kitty"
-        colEntryFont: root.colBlack
+        colEntryFont: tokyonight.colBlack
         entryBorderWidth: 0
-        colHighlight: Qt.alpha(root.colPurple, 0.4)
-        colHighlightBorder: Qt.darker(root.colPurple, 1.4)
+        colHighlight: Qt.alpha(tokyonight.colPurple, 0.4)
+        colHighlightBorder: Qt.darker(tokyonight.colPurple, 1.4)
         defaultFont: root.font
     }
     NetworkWidget {
