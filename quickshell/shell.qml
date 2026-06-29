@@ -11,7 +11,7 @@ PanelWindow { // qmllint disable uncreatable-type
     anchors.left: true
     anchors.right: true
     implicitHeight: 30
-    color: tokyonight.colBg
+    color: "white"
 
     // qmlformat off
     property font font: Qt.font({
@@ -84,53 +84,16 @@ PanelWindow { // qmllint disable uncreatable-type
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: 6
 
-                HyprlandWorkspaces {
-                    activeWorkspaceColor: tokyonight.colBarelyGrey
-                    inactiveWorkspaceColor: tokyonight.colTurqoise
-                    emptyInactiveWorkspaceColor: tokyonight.colBlue
-                    font.family: root.font.family
-                    font.pixelSize: root.font.pixelSize
-                    font.bold: true
-                }
-
-                Rectangle {
-                    implicitWidth: 1
-                    implicitHeight: 16
-                    color: tokyonight.colMuted
-                }
-
+                HyprlandWorkspaces {}
                 IdleInhibitor {
                     importantWindow: root
-                    font.family: root.font.family
-                    font.pixelSize: root.font.pixelSize
-                    textColor: tokyonight.colDarkLime
                 }
-
-                Rectangle {
-                    implicitWidth: 1
-                    implicitHeight: 16
-                    color: tokyonight.colMuted
-                }
-
                 Tray {
                     id: tray
                     shellWindow: root
                     visible: trayVisible
                 }
-
-                Rectangle {
-                    implicitWidth: 1
-                    implicitHeight: 16
-                    color: tokyonight.colMuted
-                    visible: tray.trayVisible
-                }
-
-                NetworkBarWidget {
-                    color: tokyonight.colPurple
-                    font.family: root.font.family
-                    font.pixelSize: root.font.pixelSize
-                    font.bold: true
-                }
+                NetworkBarWidget {}
             }
         }
 
@@ -146,10 +109,7 @@ PanelWindow { // qmllint disable uncreatable-type
                 text: Hyprland.activeToplevel?.title ?? ""
                 wrapMode: Text.WrapAnywhere
                 clip: true
-                color: tokyonight.colDarkOrange
-                font.family: root.font.family
-                font.pixelSize: root.font.pixelSize
-                font.bold: true
+                color: "black"
             }
         }
 
@@ -167,74 +127,14 @@ PanelWindow { // qmllint disable uncreatable-type
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: 12
 
-                PipeWireWidget {
-                    color: tokyonight.colPink
-                    font.family: root.font.family
-                    font.pixelSize: root.font.pixelSize
-                    font.bold: true
-                }
-
-                Rectangle {
-                    implicitWidth: 1
-                    implicitHeight: 16
-                    color: tokyonight.colMuted
-                }
-
-                CpuWidget {
-                    color: tokyonight.colTurqoise
-                    font.family: root.font.family
-                    font.pixelSize: root.font.pixelSize
-                    font.bold: true
-                }
-
-                Rectangle {
-                    implicitWidth: 1
-                    implicitHeight: 16
-                    color: tokyonight.colMuted
-                }
-
-                MemoryWidget {
-                    color: tokyonight.colLightPurple
-                    font.family: root.font.family
-                    font.pixelSize: root.font.pixelSize
-                    font.bold: true
-                }
-
-                Rectangle {
-                    implicitWidth: 1
-                    implicitHeight: 16
-                    color: tokyonight.colMuted
-                }
-
-                ClockWidget {
-                    color: tokyonight.colBarelyGrey
-                    font.family: root.font.family
-                    font.pixelSize: root.font.pixelSize
-                    font.bold: true
-                }
+                PipeWireWidget {}
+                CpuWidget {}
+                MemoryWidget {}
+                ClockWidget {}
             }
         }
     }
-    Notifications {
-        fontSize: root.font.pixelSize
-        fontFamily: root.font.family
-        colBg: tokyonight.colBg
-        colFg: tokyonight.colFg
-        fontColor: tokyonight.colPurple
-        centerAppNameFont.italic: true
-    }
-    AppLauncher {
-        colBg: Qt.alpha(Qt.lighter(tokyonight.colBg, 1.5), 0.7)
-        colFg: Qt.alpha(tokyonight.colFg, 0.7)
-        amountOfColumns: 3
-        terminal: "kitty"
-        colEntryFont: tokyonight.colBlack
-        entryBorderWidth: 0
-        colHighlight: Qt.alpha(tokyonight.colPurple, 0.4)
-        colHighlightBorder: Qt.darker(tokyonight.colPurple, 1.4)
-        defaultFont: root.font
-    }
-    NetworkWidget {
-        font: root.font
-    }
+    Notifications {}
+    AppLauncher {}
+    NetworkWidget {}
 }
