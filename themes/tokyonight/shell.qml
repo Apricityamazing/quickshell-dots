@@ -99,19 +99,6 @@ PanelWindow { // qmllint disable uncreatable-type
                     color: tokyonight.colMuted
                 }
 
-                IdleInhibitor {
-                    importantWindow: root
-                    font.family: root.font.family
-                    font.pixelSize: root.font.pixelSize
-                    textColor: tokyonight.colDarkLime
-                }
-
-                Rectangle {
-                    implicitWidth: 1
-                    implicitHeight: 16
-                    color: tokyonight.colMuted
-                }
-
                 Tray {
                     id: tray
                     shellWindow: root
@@ -125,11 +112,37 @@ PanelWindow { // qmllint disable uncreatable-type
                     visible: tray.trayVisible
                 }
 
-                NetworkBarWidget {
+                PipeWireWidget {
                     color: tokyonight.colPurple
                     font.family: root.font.family
                     font.pixelSize: root.font.pixelSize
                     font.bold: true
+                }
+
+                Rectangle {
+                    implicitWidth: 1
+                    implicitHeight: 16
+                    color: tokyonight.colMuted
+                }
+
+                NetworkBarWidget {
+                    color: tokyonight.colPink
+                    font.family: root.font.family
+                    font.pixelSize: root.font.pixelSize
+                    font.bold: true
+                }
+
+                Rectangle {
+                    implicitWidth: 1
+                    implicitHeight: 16
+                    color: tokyonight.colMuted
+                }
+
+                IdleInhibitor {
+                    importantWindow: root
+                    font.family: root.font.family
+                    font.pixelSize: root.font.pixelSize
+                    textColor: tokyonight.colDarkLime
                 }
             }
         }
@@ -142,10 +155,14 @@ PanelWindow { // qmllint disable uncreatable-type
             color: "transparent"
 
             Text {
-                anchors.centerIn: parent  // center directly in the Rectangle, no inner RowLayout needed
+                anchors.centerIn: parent  // center directly in the Rectangle, no inner RowLayout needd
+                width: parent.width
+                height: parent.height
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
                 text: Hyprland.activeToplevel?.title ?? ""
-                wrapMode: Text.WrapAnywhere
                 clip: true
+                elide: Text.ElideMiddle
                 color: tokyonight.colDarkOrange
                 font.family: root.font.family
                 font.pixelSize: root.font.pixelSize
@@ -166,12 +183,9 @@ PanelWindow { // qmllint disable uncreatable-type
                 anchors.rightMargin: 4
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: 12
-
-                PipeWireWidget {
-                    color: tokyonight.colPink
-                    font.family: root.font.family
-                    font.pixelSize: root.font.pixelSize
-                    font.bold: true
+                NotificationBarWidget {
+                    color: tokyonight.colLightOrange
+                    font: root.font
                 }
 
                 Rectangle {
@@ -215,7 +229,7 @@ PanelWindow { // qmllint disable uncreatable-type
             }
         }
     }
-    Notifications {
+    NotificationWidget {
         fontSize: root.font.pixelSize
         fontFamily: root.font.family
         colBg: tokyonight.colBg
@@ -233,8 +247,5 @@ PanelWindow { // qmllint disable uncreatable-type
         colHighlight: Qt.alpha(tokyonight.colPurple, 0.4)
         colHighlightBorder: Qt.darker(tokyonight.colPurple, 1.4)
         defaultFont: root.font
-    }
-    NetworkWidget {
-        font: root.font
     }
 }

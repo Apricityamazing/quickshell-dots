@@ -9,7 +9,7 @@ import QtQuick.Layouts
 
 Scope {
     id: root
-    property bool launcherOpen: false
+    property bool launcherOpen: Visibility.appLauncherVisible
 
     QtObject {
         id: internal
@@ -25,7 +25,7 @@ Scope {
         property color defaultColFg: "white"
         property int defaultRadius: 5
         function close() {
-            root.launcherOpen = false;
+            Visibility.appLauncherVisible = false;
             searchInput.clear();
         }
     }
@@ -57,14 +57,14 @@ Scope {
     IpcHandler {
         target: "launcher"
         function toggle(): void {
-            root.launcherOpen = !root.launcherOpen;
+            Visibility.appLauncherVisible = !Visibility.appLauncherVisible;
             searchInput.clear();
         }
         function show(): void {
-            root.launcherOpen = true;
+            Visibility.appLauncherVisible = true;
         }
         function hide(): void {
-            root.launcherOpen = false;
+            Visibility.appLauncherVisible = false;
             searchInput.clear();
         }
     }
