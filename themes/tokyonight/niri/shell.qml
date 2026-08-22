@@ -1,6 +1,5 @@
 //@ pragma UseQApplication
 import Quickshell
-import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
 
@@ -84,21 +83,6 @@ PanelWindow { // qmllint disable uncreatable-type
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: 6
 
-                HyprlandWorkspaces {
-                    activeWorkspaceColor: tokyonight.colBarelyGrey
-                    inactiveWorkspaceColor: tokyonight.colTurqoise
-                    emptyInactiveWorkspaceColor: tokyonight.colBlue
-                    font.family: root.font.family
-                    font.pixelSize: root.font.pixelSize
-                    font.bold: true
-                }
-
-                Rectangle {
-                    implicitWidth: 1
-                    implicitHeight: 16
-                    color: tokyonight.colMuted
-                }
-
                 Tray {
                     id: tray
                     shellWindow: root
@@ -173,7 +157,7 @@ PanelWindow { // qmllint disable uncreatable-type
                 height: parent.height
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                text: Hyprland.activeToplevel?.title ?? ""
+                text: "Make Title Bar"
                 clip: true
                 elide: Text.ElideMiddle
                 color: tokyonight.colDarkOrange
