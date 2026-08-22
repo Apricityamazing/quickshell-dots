@@ -5,10 +5,11 @@ import QtQuick
 
 Singleton {
     id: root
-    property int cpuUsage: 0
+    readonly property int cpuUsage: internal.cpuUsage
 
     QtObject {
         id: internal
+        property int cpuUsage: 0
         property var lastCpuTotal: 0
         property var lastCpuIdle: 0
     }
@@ -24,7 +25,7 @@ Singleton {
                 var idle = parseInt(p[4]) + parseInt(p[5]);
                 var total = p.slice(1, 8).reduce((a, b) => a + parseInt(b), 0);
                 if (internal.lastCpuTotal > 0) {
-                    root.cpuUsage = Math.round(100 * (1 - (idle - internal.lastCpuIdle) / (total - internal.lastCpuTotal)));
+                    internal.cpuUsage = Math.round(100 * (1 - (idle - internal.lastCpuIdle) / (total - internal.lastCpuTotal)));
                 }
                 internal.lastCpuTotal = total;
                 internal.lastCpuIdle = idle;

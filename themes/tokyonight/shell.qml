@@ -138,11 +138,24 @@ PanelWindow { // qmllint disable uncreatable-type
                     color: tokyonight.colMuted
                 }
 
+                BrightnessWidget {
+                    color: tokyonight.colLightLime
+                    font.family: root.font.family
+                    font.pixelSize: root.font.pixelSize
+                    font.bold: true
+                }
+
+                Rectangle {
+                    implicitWidth: 1
+                    implicitHeight: 16
+                    color: tokyonight.colMuted
+                }
+
                 IdleInhibitor {
+                    textColor: tokyonight.colLightGray
                     importantWindow: root
                     font.family: root.font.family
                     font.pixelSize: root.font.pixelSize
-                    textColor: tokyonight.colDarkLime
                 }
             }
         }

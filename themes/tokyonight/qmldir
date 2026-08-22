@@ -3,6 +3,7 @@ singleton NotificationService 1.0 NotificationService.qml
 singleton CpuService 1.0 CpuService.qml
 singleton MemoryService 1.0 MemoryService.qml
 singleton PipeWireService 1.0 PipeWireService.qml
+singleton BrightnessService 1.0 BrightnessService.qml
 singleton Visibility 1.0 Visibility.qml
 CpuWidget 1.0 CpuWidget.qml
 MemoryWidget 1.0 MemoryWidget.qml
@@ -14,4 +15,5 @@ NotificationWidget 1.0 NotificationWidget.qml
 NotificationBarWidget 1.0 NotificationBarWidget.qml
 AppLauncher 1.0 AppLauncher.qml
 NetworkBarWidget 1.0 NetworkBarWidget.qml
+BrightnessWidget 1.0 BrightnessWidget.qml
 Tray 1.0 Tray.qml
