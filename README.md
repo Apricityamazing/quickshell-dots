@@ -13,5 +13,7 @@ To customize everything yourself, study the implementation in the different them
 
 ## Developing
 If you would like to change these dots, and are using an IDE like [neovim](https://neovim.io/), it might be useful to install a project like [quickshell-completion](https://github.com/cushycush/quickshell-completions.nvim), as it is what I use.
-You also might want to symlink quickshell's .qmlls.ini file which should be somewhere inside of /run/user/1000/quickshell/vfs
-You should be able to find your quickshell configuration inside the subsequent directory, and you can just symlink the .qmlls.ini file located in there into the root of your quickshell configuration decoration.
+You should create a .qmlls.ini file in the root of your quickshell directory by doing something like:
+`` bash
+touch ~/quickshell-config/.qmlls.ini
+``
