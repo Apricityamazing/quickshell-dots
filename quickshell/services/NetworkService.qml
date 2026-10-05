@@ -61,7 +61,7 @@ Singleton {
     function update() {
         const device = root.activeDevice();
         const type = device === null ? null : device.type;
-        const network = root.connectedWifiNetwork;
+        const network = root.connectedWifiNetwork();
         root.deviceType = type;
         root.isConnected = device !== null;
         root.isWifiDevice = type === DeviceType.Wifi;
