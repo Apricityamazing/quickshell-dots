@@ -1,0 +1,6 @@
+singleton BrightnessService 1.0 BrightnessService.qml
+singleton CpuService 1.0 CpuService.qml
+singleton MemoryService 1.0 MemoryService.qml
+singleton NetworkService 1.0 NetworkService.qml
+singleton NotificationService 1.0 NotificationService.qml
+singleton PipeWireService 1.0 PipeWireService.qml
