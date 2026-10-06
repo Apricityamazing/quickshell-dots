@@ -21,15 +21,15 @@ Text {
     PwObjectTracker {
         // Add sink after root.sink
         objects: {
-            root.sink;
+            root.sink ? [root.sink] : [];
             // root.mySink;
         }
     }
 
     QtObject {
         id: internal
-        property bool isMuted: root.sink.audio.muted
-        property var volume: Math.round(root.sink.audio.volume * 100)
+        property bool isMuted: root.sink ? root.sink.audio.muted : false
+        property var volume: root.sink ? Math.round(root.sink.audio.volume * 100) : 0
         property color defaultFontColor: "black"
         property var defaultFontFamily: "Helvetica"
         property int defaultFontSize: 13
