@@ -1,4 +1,5 @@
 import QtQuick
+import QtQml
 import "../../state"
 import "../../services"
 
