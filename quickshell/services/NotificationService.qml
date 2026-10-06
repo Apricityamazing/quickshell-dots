@@ -5,6 +5,7 @@ import QtQuick
 
 Singleton {
     id: root
+		readonly property ListModel notificationHistory: persist.notificationHistory
     PersistentProperties {
         id: persist
         // Allows notifications to not get removed after a quickshell reload
