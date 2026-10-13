@@ -14,6 +14,6 @@ To customize everything yourself, study the implementation in the different them
 ## Developing
 If you would like to change these dots, and are using an IDE like [neovim](https://neovim.io/), it might be useful to install a project like [quickshell-completion](https://github.com/cushycush/quickshell-completions.nvim), as it is what I use.
 You should create a .qmlls.ini file in the root of your quickshell directory by doing something like:
-`` bash
+```bash
 touch ~/quickshell-config/.qmlls.ini
-``
+```
