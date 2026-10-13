@@ -164,7 +164,7 @@ Scope {
                             onTextChanged: {
                                 if (appGrid.currentIndex < 0 || appGrid.currentIndex >= sortedApps.values.length)
                                     appGrid.currentIndex = 0;
-                                Qt.callLater(appGrid.ensureVisible);
+                                Qt.callLater(() => appGrid.animateTo(appGrid.currentIndex));
                             }
                             Layout.fillWidth: true
                             verticalAlignment: TextInput.AlignVCenter
@@ -214,6 +214,11 @@ Scope {
                     cellHeight: 80
                     keyNavigationWraps: true
                     highlightFollowsCurrentItem: false
+                    onCurrentIndexChanged: animateTo(currentIndex)
+                    onMovementStarted: scrollAnimation.stop() // user flick/wheel cancels the glide
+                    snapMode: GridView.SnapToRow
+                    readonly property int columns: Math.max(1, Math.floor(width / cellWidth))
+                    readonly property real maxContentY: Math.max(0, contentHeight - height)
                     highlight: Highlight {
                         target: appGrid.currentItem
                         z: 2
@@ -224,10 +229,37 @@ Scope {
                         moveDuration: 120
                     }
 
-                    function ensureVisible() {
-                        if (currentIndex < 0 || currentIndex >= count)
+                    function rowTop(index) {
+                        return Math.floor(index / columns) * cellHeight;
+                    }
+
+                    NumberAnimation {
+                        id: scrollAnimation
+                        target: appGrid
+                        property: "contentY"
+                        duration: 500
+                        easing.type: Easing.InOutQuad
+                    }
+
+                    function animateTo(index) {
+                        if (index < 0 || index >= count || moving || flicking)
                             return;
-                        positionViewAtIndex(currentIndex, GridView.Contain);
+
+                        const top = rowTop(index);
+                        let target = contentY;
+                        if (top < contentY)
+                            target = top;
+                        else if (top + cellHeight > contentY + height)
+                            target = top + cellHeight - height;
+                        target = Math.max(0, Math.min(maxContentY, target));
+
+                        if (Math.abs(target - contentY) < 0.5)
+                            return;
+
+                        scrollAnimation.stop();
+                        scrollAnimation.from = contentY;
+                        scrollAnimation.to = target;
+                        scrollAnimation.start();
                     }
 
                     function launchCurrentItem() {
